@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import SearchBar from './SearchBar';
 import ResultList from './ResultList';
+import PreviewWindow from './PreviewWindow';
 
 class App extends Component {
   constructor(props) {
@@ -8,6 +9,7 @@ class App extends Component {
 
     this.state = {
       results: [],
+      resultInPreview: null,
       selectedResults: []
     }
 
@@ -34,6 +36,9 @@ class App extends Component {
         </div>
         <div>
           <ResultList results={this.state.results}/>
+        </div>
+        <div>
+          <PreviewWindow />
         </div>
       </div>
     );
