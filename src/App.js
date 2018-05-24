@@ -10,13 +10,26 @@ class App extends Component {
       results: [],
       selectedResults: []
     }
+
+    this.bingSearch = this.bingSearch.bind(this);
   }
+
+  bingSearch(term) {
+    fetch('http://localhost:8000/search/results?search_query=' + term)
+    .then((response) => {
+      response.json()
+      .then((json) => {
+        this.setState({results: json.value})
+      })
+     })
+    
+  }  
 
 
   render() {
     return (
       <div className="App">
-        <SearchBar/>
+        <SearchBar bingSearch={this.bingSearch} />
       </div>
     );
   }

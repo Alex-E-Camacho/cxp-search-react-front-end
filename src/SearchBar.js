@@ -14,7 +14,7 @@ class SearchBar extends Component {
   }
 
   handleSubmit(event) {
-      alert(this.state.searchQuery + ' was searched');
+      this.props.bingSearch(this.state.searchQuery);
       event.preventDefault();
   }
 
