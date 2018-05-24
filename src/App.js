@@ -29,7 +29,9 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <SearchBar bingSearch={this.bingSearch} />
+        <div>
+          <SearchBar bingSearch={this.bingSearch} />
+        </div>
       </div>
     );
   }
