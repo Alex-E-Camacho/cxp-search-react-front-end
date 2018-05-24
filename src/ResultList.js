@@ -1,4 +1,5 @@
 import React from 'react';
+import ResultItem from './ResultItem';
 
 const ResultList = ({results}) => {
     if (!results) {
@@ -7,15 +8,13 @@ const ResultList = ({results}) => {
     
     const searchResults = results.map((result) => {
         return (
-            <li>{result.url}</li>
+            <ResultItem result={result} key={result.id}/>
         )
     })
     
     return (
         <div>
-            <ul>
-                {searchResults}
-            </ul>
+            {searchResults}
         </div>
     )   
 }
