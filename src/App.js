@@ -34,11 +34,6 @@ class App extends Component {
 
 
   render() {
-    let previewWindow = null;
-
-    if (this.state.resultInPreview) {
-      previewWindow = <PreviewWindow resultInPreview={this.state.resultInPreview} />
-    }
 
     return (
       <div className="App">
@@ -49,7 +44,7 @@ class App extends Component {
           <ResultList results={this.state.results} fillPreview={this.fillPreviewWindow} />
         </div>
         <div>
-          {previewWindow}
+          <PreviewWindow resultInPreview={this.state.resultInPreview} />
         </div>
       </div>
     );
