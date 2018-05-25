@@ -1,12 +1,12 @@
 import React from "react";
 
-const PreviewWindow = (resultInPreview) => {
+const PreviewWindow = (props) => {
     // if (resultInPreview === null) {
     //     return null;
     // }
 
     return (
-        <iframe src={resultInPreview} title={resultInPreview}>
+        <iframe src={props.resultInPreview} title={props.resultInPreview}>
         </iframe>
     )
 }
