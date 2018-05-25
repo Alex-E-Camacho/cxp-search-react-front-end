@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import SearchBar from './SearchBar';
 import ResultList from './ResultList';
+import PreviewWindow from './PreviewWindow';
 
 class App extends Component {
   constructor(props) {
@@ -8,10 +9,12 @@ class App extends Component {
 
     this.state = {
       results: [],
+      resultInPreview: null,
       selectedResults: []
     }
 
     this.bingSearch = this.bingSearch.bind(this);
+    this.fillPreviewWindow = this.fillPreviewWindow.bind(this);
   }
 
   bingSearch(term) {
@@ -23,17 +26,25 @@ class App extends Component {
       })
      })
     
-  }  
+  }
+  
+  fillPreviewWindow(url) {
+    this.setState({resultInPreview: url})
+  }
 
 
   render() {
+
     return (
       <div className="App">
         <div>
           <SearchBar bingSearch={this.bingSearch} />
         </div>
         <div>
-          <ResultList results={this.state.results}/>
+          <ResultList results={this.state.results} fillPreview={this.fillPreviewWindow} />
+        </div>
+        <div>
+          <PreviewWindow resultInPreview={this.state.resultInPreview} />
         </div>
       </div>
     );

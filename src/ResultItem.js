@@ -1,7 +1,8 @@
 import React from 'react';
+import ResultPreviewButton from './ResultPreviewButton';
 
-const ResultItem = ({result}) => {
-    if (!result) {
+const ResultItem = (props) => {
+    if (!props.result) {
         return null;
     }
 
@@ -9,15 +10,17 @@ const ResultItem = ({result}) => {
         <table>
             <tbody>
                 <tr>
-                    <th><a href={result.url}>{result.name}</a></th>
+                    <th><a href={props.result.url}>{props.result.name}</a></th>
                 </tr>
                 <tr>
-                    <td>{result.displayUrl}</td>
+                    <td>{props.result.displayUrl}</td>
                 </tr>
                 <tr>
-                    <td>{result.snippet}</td>
+                    <td>{props.result.snippet}</td>
                 </tr>
-                
+                <tr>
+                    <ResultPreviewButton fillPreview={props.fillPreview} url={props.result.url}/>
+                </tr>
             </tbody>
         </table>
     )

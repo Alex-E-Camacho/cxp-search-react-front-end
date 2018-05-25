@@ -1,14 +1,14 @@
 import React from 'react';
 import ResultItem from './ResultItem';
 
-const ResultList = ({results}) => {
-    if (!results) {
+const ResultList = (props) => {
+    if (!props.results) {
         return <div>null</div>
     }
-    
-    const searchResults = results.map((result) => {
+
+    const searchResults = props.results.map((result) => {
         return (
-            <ResultItem result={result} key={result.id}/>
+            <ResultItem result={result} key={result.id} fillPreview={props.fillPreview}/>
         )
     })
     
