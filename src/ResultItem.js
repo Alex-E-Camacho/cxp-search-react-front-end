@@ -22,7 +22,7 @@ const ResultItem = (props) => {
                     </tr>
                 </tbody>
             </table>
-            <SaveResultCheckbox addResult={props.addResult} url={props.result.url}/>
+            <SaveResultCheckbox addResult={props.addResult} url={props.result.url} removeResult={props.removeResult}/>
             <ResultPreviewButton fillPreview={props.fillPreview} url={props.result.url}/>
         </div>
     )

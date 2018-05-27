@@ -8,7 +8,13 @@ const ResultList = (props) => {
 
     const searchResults = props.results.map((result) => {
         return (
-            <ResultItem result={result} key={result.id} fillPreview={props.fillPreview} addResult={props.addResult}/>
+            <ResultItem 
+                result={result} 
+                key={result.id} 
+                fillPreview={props.fillPreview} 
+                addResult={props.addResult}
+                removeResult={props.removeResult}
+                />
         )
     })
     

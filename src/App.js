@@ -16,6 +16,7 @@ class App extends Component {
     this.bingSearch = this.bingSearch.bind(this);
     this.fillPreviewWindow = this.fillPreviewWindow.bind(this);
     this.addResult = this.addResult.bind(this);
+    this.removeResult = this.removeResult.bind(this);
   }
 
   bingSearch(term) {
@@ -37,6 +38,13 @@ class App extends Component {
     this.setState({selectedResults: [...this.state.selectedResults, url]})
   }
 
+  removeResult(url) {
+    let currentSelectedResults = [...this.state.selectedResults];
+    let index = currentSelectedResults.indexOf(url);
+    currentSelectedResults.splice(index, 1);
+    this.setState({selectedResults: currentSelectedResults})
+  }
+
   render() {
 
     return (
@@ -46,7 +54,12 @@ class App extends Component {
           <p>{this.state.selectedResults}</p>
         </div>
         <div>
-          <ResultList results={this.state.results} fillPreview={this.fillPreviewWindow} addResult={this.addResult}/>
+          <ResultList 
+            results={this.state.results} 
+            fillPreview={this.fillPreviewWindow} 
+            addResult={this.addResult}
+            removeResult={this.removeResult}
+            />
         </div>
         <div>
           <PreviewWindow resultInPreview={this.state.resultInPreview} />

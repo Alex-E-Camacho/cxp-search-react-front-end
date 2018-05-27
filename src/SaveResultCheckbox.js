@@ -24,8 +24,13 @@ class SaveResultCheckBox extends Component {
 
     handleChange() {
         this.setState({ checked: !this.state.checked });
-        this.props.addResult(this.props.url);
+        if (this.state.checked === false) {
+            this.props.addResult(this.props.url);
+        } else {
+            this.props.removeResult(this.props.url)
+        }
     }
+
 
 
     render() {
