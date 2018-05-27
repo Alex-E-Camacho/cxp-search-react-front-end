@@ -1,17 +1,5 @@
 import React, { Component } from 'react';
 
-// const SaveResultCheckBox = (props) => {
-
-//     let handleClick = props.addResult;
-
-//     return (
-//         <div>
-//             <button type="button" onClick={() => handleClick(props.url)}>Add</button>
-//         </div>
-//     )
-// }
-
-
 class SaveResultCheckBox extends Component {
     constructor(props) {
         super(props);
