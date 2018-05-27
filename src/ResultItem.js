@@ -1,6 +1,6 @@
 import React from 'react';
 import ResultPreviewButton from './ResultPreviewButton';
-import SaveCheckBox from './SaveCheckBox';
+import SaveResultCheckbox from './SaveResultCheckbox';
 
 const ResultItem = (props) => {
     if (!props.result) {
@@ -22,7 +22,7 @@ const ResultItem = (props) => {
                     </tr>
                 </tbody>
             </table>
-            <SaveCheckBox addResult={props.addResult}/>
+            <SaveResultCheckbox addResult={props.addResult} url={props.result.url}/>
             <ResultPreviewButton fillPreview={props.fillPreview} url={props.result.url}/>
         </div>
     )

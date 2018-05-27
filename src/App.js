@@ -43,6 +43,7 @@ class App extends Component {
       <div className="App">
         <div>
           <SearchBar bingSearch={this.bingSearch} />
+          <p>{this.state.selectedResults}</p>
         </div>
         <div>
           <ResultList results={this.state.results} fillPreview={this.fillPreviewWindow} addResult={this.addResult}/>
