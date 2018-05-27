@@ -8,6 +8,7 @@ class App extends Component {
     super(props);
 
     this.state = {
+      searchQuery: '',
       results: [],
       resultInPreview: null,
       selectedResults: []
@@ -17,6 +18,11 @@ class App extends Component {
     this.fillPreviewWindow = this.fillPreviewWindow.bind(this);
     this.addResult = this.addResult.bind(this);
     this.removeResult = this.removeResult.bind(this);
+    this.handleChange = this.handleChange.bind(this);
+  }
+
+  handleChange(event) {
+    this.setState({ searchQuery: event.target.value })
   }
 
   bingSearch(term) {
@@ -45,13 +51,28 @@ class App extends Component {
     this.setState({selectedResults: currentSelectedResults})
   }
 
+  saveResults() {
+    fetch('http://localhost:8000/search', {
+      method: 'POST',
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+        search_query: this.state.searchQuery,
+        results: this.state.selectedResults
+      })
+    })
+  }
+
   render() {
 
     return (
       <div className="App">
         <div>
-          <SearchBar bingSearch={this.bingSearch} />
+          <SearchBar bingSearch={this.bingSearch} searchQuery={this.state.searchQuery} handleChange={this.handleChange}/>
           <p>{this.state.selectedResults}</p>
+          <p>{this.state.searchQuery}</p>
         </div>
         <div>
           <ResultList 

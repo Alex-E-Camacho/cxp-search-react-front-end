@@ -1,33 +1,48 @@
 import React, { Component } from 'react';
 
-class SearchBar extends Component {
-  constructor(props) {
-      super(props);
-      this.state = {searchQuery: ''}
+// class SearchBar extends Component {
+//   constructor(props) {
+//       super(props);
+//       this.state = {searchQuery: ''}
 
-      this.handleChange = this.handleChange.bind(this);
-      this.handleSubmit = this.handleSubmit.bind(this);
-  }
+//       this.handleChange = this.handleChange.bind(this);
+//       this.handleSubmit = this.handleSubmit.bind(this);
+//   }
 
-  handleChange(event) {
-      this.setState({searchQuery: event.target.value});
-  }
+//   handleChange(event) {
+//       this.setState({searchQuery: event.target.value});
+//   }
 
-  handleSubmit(event) {
-      this.props.bingSearch(this.state.searchQuery);
-      event.preventDefault();
-  }
+//   handleSubmit(event) {
+//       this.props.bingSearch(this.state.searchQuery);
+//       event.preventDefault();
+//   }
 
-    render() {
-        return (
-            <div>
-                <form onSubmit={this.handleSubmit}>
-                    <input value={this.state.searchQuery} onChange={this.handleChange}/>
-                    <input type="submit" value="Search" />
-                </form>
-            </div>
-        )
+//     render() {
+//         return (
+//             <div>
+//                 <form onSubmit={this.handleSubmit}>
+//                     <input value={this.state.searchQuery} onChange={this.handleChange}/>
+//                     <input type="submit" value="Search" />
+//                 </form>
+//             </div>
+//         )
+//     }
+// }
+const SearchBar = (props) => {
+
+   const handleSubmit = (event) => {
+        props.bingSearch(props.searchQuery);
+        event.preventDefault();
     }
-}
 
+    return (
+        <div>
+            <form onSubmit={handleSubmit}>
+                <input value={props.searchQuery} onChange={props.handleChange} />
+                <input type="submit" value="Search" />
+            </form>
+        </div>
+    )
+}
 export default SearchBar;
