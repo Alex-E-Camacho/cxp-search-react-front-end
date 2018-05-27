@@ -1,5 +1,6 @@
 import React from 'react';
 import ResultPreviewButton from './ResultPreviewButton';
+import SaveResultCheckbox from './SaveResultCheckbox';
 
 const ResultItem = (props) => {
     if (!props.result) {
@@ -7,22 +8,23 @@ const ResultItem = (props) => {
     }
 
     return (
-        <table>
-            <tbody>
-                <tr>
-                    <th><a href={props.result.url}>{props.result.name}</a></th>
-                </tr>
-                <tr>
-                    <td>{props.result.displayUrl}</td>
-                </tr>
-                <tr>
-                    <td>{props.result.snippet}</td>
-                </tr>
-                <tr>
-                    <ResultPreviewButton fillPreview={props.fillPreview} url={props.result.url}/>
-                </tr>
-            </tbody>
-        </table>
+        <div>
+            <table>
+                <tbody>
+                    <tr>
+                        <th><a href={props.result.url}>{props.result.name}</a></th>
+                    </tr>
+                    <tr>
+                        <td>{props.result.displayUrl}</td>
+                    </tr>
+                    <tr>
+                        <td>{props.result.snippet}</td>
+                    </tr>
+                </tbody>
+            </table>
+            <SaveResultCheckbox addResult={props.addResult} url={props.result.url} removeResult={props.removeResult}/>
+            <ResultPreviewButton fillPreview={props.fillPreview} url={props.result.url}/>
+        </div>
     )
 }
 
