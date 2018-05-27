@@ -15,6 +15,7 @@ class App extends Component {
 
     this.bingSearch = this.bingSearch.bind(this);
     this.fillPreviewWindow = this.fillPreviewWindow.bind(this);
+    this.addResult = this.addResult.bind(this);
   }
 
   bingSearch(term) {
@@ -32,6 +33,9 @@ class App extends Component {
     this.setState({resultInPreview: url})
   }
 
+  addResult(url) {
+    this.setState({selectedResults: [...this.state.selectedResults, url]})
+  }
 
   render() {
 
@@ -41,7 +45,7 @@ class App extends Component {
           <SearchBar bingSearch={this.bingSearch} />
         </div>
         <div>
-          <ResultList results={this.state.results} fillPreview={this.fillPreviewWindow} />
+          <ResultList results={this.state.results} fillPreview={this.fillPreviewWindow} addResult={this.addResult}/>
         </div>
         <div>
           <PreviewWindow resultInPreview={this.state.resultInPreview} />
