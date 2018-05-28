@@ -64,6 +64,12 @@ class App extends Component {
         search_text: this.state.searchQuery,
         results: this.state.selectedResults
       })
+    });
+    this.setState({
+      searchQuery: '',
+      results: [],
+      resultInPreview: null,
+      selectedResults: []
     })
   }
 
@@ -72,9 +78,10 @@ class App extends Component {
     return (
       <div className="App">
         <div>
-          <SearchBar bingSearch={this.bingSearch} searchQuery={this.state.searchQuery} handleChange={this.handleChange}/>
-          <p>{this.state.selectedResults}</p>
-          <p>{this.state.searchQuery}</p>
+          <SearchBar bingSearch={this.bingSearch} 
+            searchQuery={this.state.searchQuery} 
+            handleChange={this.handleChange}
+          />
         </div>
         <div>
           <ResultList 
@@ -82,13 +89,13 @@ class App extends Component {
             fillPreview={this.fillPreviewWindow} 
             addResult={this.addResult}
             removeResult={this.removeResult}
-            />
+          />
         </div>
         <div>
           <PreviewWindow resultInPreview={this.state.resultInPreview} />
         </div>
         <div>
-          <SaveResultsButton saveResults={this.saveResults} />
+          <SaveResultsButton saveResults={this.saveResults} selectedResults={this.state.selectedResults}/>
         </div>
       </div>
     );

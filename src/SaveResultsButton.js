@@ -2,6 +2,10 @@ import React from 'react';
 
 const SaveResultsButton = (props) => {
 
+    if (props.selectedResults.length === 0) {
+        return null
+    }
+
     let handleClick = props.saveResults;
 
     return (
