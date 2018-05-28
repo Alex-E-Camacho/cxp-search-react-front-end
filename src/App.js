@@ -42,6 +42,10 @@ class App extends Component {
     this.setState({resultInPreview: url})
   }
 
+  exitPreviewWindow() {
+    this.setState({resultInPreview: null})
+  }
+
   addResult(url) {
     this.setState({selectedResults: [...this.state.selectedResults, url]})
   }
