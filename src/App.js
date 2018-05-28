@@ -78,7 +78,8 @@ class App extends Component {
     return (
       <div className="App">
         <div>
-          <SearchBar bingSearch={this.bingSearch} 
+          <SearchBar 
+            bingSearch={this.bingSearch} 
             searchQuery={this.state.searchQuery} 
             handleChange={this.handleChange}
           />
@@ -95,7 +96,10 @@ class App extends Component {
           <PreviewWindow resultInPreview={this.state.resultInPreview} />
         </div>
         <div>
-          <SaveResultsButton saveResults={this.saveResults} selectedResults={this.state.selectedResults}/>
+          <SaveResultsButton 
+            saveResults={this.saveResults} 
+            selectedResults={this.state.selectedResults}
+          />
         </div>
       </div>
     );
