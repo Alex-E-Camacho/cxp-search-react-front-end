@@ -1,4 +1,5 @@
 import React from "react";
+import ClosePreviewButton from "./ClosePreviewButton";
 
 const PreviewWindow = (props) => {
     if (props.resultInPreview === null) {
@@ -7,6 +8,7 @@ const PreviewWindow = (props) => {
 
     return (
         <div>
+            <ClosePreviewButton exitPreviewWindow={props.exitPreviewWindow} />
             <iframe src={props.resultInPreview} title={props.resultInPreview}></iframe>
         </div>
     )

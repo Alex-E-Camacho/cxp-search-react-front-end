@@ -21,6 +21,7 @@ class App extends Component {
     this.removeResult = this.removeResult.bind(this);
     this.handleChange = this.handleChange.bind(this);
     this.saveResults = this.saveResults.bind(this);
+    this.exitPreviewWindow = this.exitPreviewWindow.bind(this);
   }
 
   handleChange(event) {
@@ -97,7 +98,10 @@ class App extends Component {
           />
         </div>
         <div>
-          <PreviewWindow resultInPreview={this.state.resultInPreview} />
+          <PreviewWindow 
+            resultInPreview={this.state.resultInPreview} 
+            exitPreviewWindow={this.exitPreviewWindow}
+          />
         </div>
         <div>
           <SaveResultsButton 
