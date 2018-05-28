@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import SearchBar from './SearchBar';
 import ResultList from './ResultList';
 import PreviewWindow from './PreviewWindow';
+import SaveResultsButton from './SaveResultsButton';
 
 class App extends Component {
   constructor(props) {
@@ -19,6 +20,7 @@ class App extends Component {
     this.addResult = this.addResult.bind(this);
     this.removeResult = this.removeResult.bind(this);
     this.handleChange = this.handleChange.bind(this);
+    this.saveResults = this.saveResults.bind(this);
   }
 
   handleChange(event) {
@@ -59,7 +61,7 @@ class App extends Component {
         'Content-Type': 'application/json'
       },
       body: JSON.stringify({
-        search_query: this.state.searchQuery,
+        search_text: this.state.searchQuery,
         results: this.state.selectedResults
       })
     })
@@ -84,6 +86,9 @@ class App extends Component {
         </div>
         <div>
           <PreviewWindow resultInPreview={this.state.resultInPreview} />
+        </div>
+        <div>
+          <SaveResultsButton saveResults={this.saveResults} />
         </div>
       </div>
     );
