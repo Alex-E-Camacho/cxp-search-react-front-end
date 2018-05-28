@@ -2,12 +2,14 @@ import React, { Component } from 'react';
 import SearchBar from './SearchBar';
 import ResultList from './ResultList';
 import PreviewWindow from './PreviewWindow';
+import SaveResultsButton from './SaveResultsButton';
 
 class App extends Component {
   constructor(props) {
     super(props);
 
     this.state = {
+      searchQuery: '',
       results: [],
       resultInPreview: null,
       selectedResults: []
@@ -17,6 +19,12 @@ class App extends Component {
     this.fillPreviewWindow = this.fillPreviewWindow.bind(this);
     this.addResult = this.addResult.bind(this);
     this.removeResult = this.removeResult.bind(this);
+    this.handleChange = this.handleChange.bind(this);
+    this.saveResults = this.saveResults.bind(this);
+  }
+
+  handleChange(event) {
+    this.setState({ searchQuery: event.target.value })
   }
 
   bingSearch(term) {
@@ -45,13 +53,36 @@ class App extends Component {
     this.setState({selectedResults: currentSelectedResults})
   }
 
+  saveResults() {
+    fetch('http://localhost:8000/search', {
+      method: 'POST',
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+        search_text: this.state.searchQuery,
+        results: this.state.selectedResults
+      })
+    });
+    this.setState({
+      searchQuery: '',
+      results: [],
+      resultInPreview: null,
+      selectedResults: []
+    })
+  }
+
   render() {
 
     return (
       <div className="App">
         <div>
-          <SearchBar bingSearch={this.bingSearch} />
-          <p>{this.state.selectedResults}</p>
+          <SearchBar 
+            bingSearch={this.bingSearch} 
+            searchQuery={this.state.searchQuery} 
+            handleChange={this.handleChange}
+          />
         </div>
         <div>
           <ResultList 
@@ -59,10 +90,16 @@ class App extends Component {
             fillPreview={this.fillPreviewWindow} 
             addResult={this.addResult}
             removeResult={this.removeResult}
-            />
+          />
         </div>
         <div>
           <PreviewWindow resultInPreview={this.state.resultInPreview} />
+        </div>
+        <div>
+          <SaveResultsButton 
+            saveResults={this.saveResults} 
+            selectedResults={this.state.selectedResults}
+          />
         </div>
       </div>
     );
