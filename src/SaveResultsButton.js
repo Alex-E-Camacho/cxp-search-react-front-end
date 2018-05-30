@@ -9,8 +9,8 @@ const SaveResultsButton = (props) => {
     let handleClick = props.saveResults;
 
     return (
-        <div>
-            <button type="button" onClick={handleClick}>Save Results</button>
+        <div className="save-results-button-container">
+            <button className="save-results-button" type="button" onClick={handleClick}>Save Results</button>
         </div>
     )
 }

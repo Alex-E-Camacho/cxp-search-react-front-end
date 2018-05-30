@@ -113,16 +113,16 @@ class App extends Component {
               addResult={this.addResult}
               removeResult={this.removeResult}
             />
+            <SaveResultsButton 
+              saveResults={this.saveResults} 
+              selectedResults={this.state.selectedResults}
+            />
           </div>
             <PreviewWindow 
               resultInPreview={this.state.resultInPreview} 
               exitPreviewWindow={this.exitPreviewWindow}
             />
 
-            <SaveResultsButton 
-              saveResults={this.saveResults} 
-              selectedResults={this.state.selectedResults}
-            />
         </div>
     );
   }

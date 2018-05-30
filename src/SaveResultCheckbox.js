@@ -23,7 +23,7 @@ class SaveResultCheckBox extends Component {
 
     render() {
         return (
-            <div>
+            <div className="checkbox">
                 <input type="checkbox" checked={this.state.checked} onChange={this.handleChange} />
                 <p>{this.state.checked} </p>
             </div>

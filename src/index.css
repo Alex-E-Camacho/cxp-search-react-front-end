@@ -99,3 +99,30 @@ a, u {
   text-align: left;
   margin-left: 125px;
 }
+
+.checkbox {
+  text-align: right;
+}
+
+.save-results-button {
+  margin-left: 120px;
+  background-color: #555555;
+  border: none;
+  color: white;
+  padding: 10px 25px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  /* margin: 4px 2px; */
+  cursor: pointer;
+  border-radius: 4px 5px 5px 4px;
+}
+
+.results-container {
+  margin-bottom: 50px;
+}
+
+.save-results-button-container {
+  margin-bottom: 100px;
+}
