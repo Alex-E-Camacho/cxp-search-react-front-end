@@ -12,7 +12,7 @@ const ResultItem = (props) => {
             <table>
                 <tbody>
                     <tr>
-                        <th className="result-title"><a href={props.result.url}>{props.result.name}</a></th>
+                        <th className="result-title"><a href={props.result.url} target="_blank">{props.result.name}</a></th>
                     </tr>
                     <tr>
                         <td className="display-url">{props.result.displayUrl}</td>

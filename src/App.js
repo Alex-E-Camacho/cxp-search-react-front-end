@@ -82,17 +82,22 @@ class App extends Component {
 
   render() {
 
-    let className = "container";
+    let className = {
+      container: "container",
+      title: "title"
+    };
     
     if (this.state.results.length > 1) {
-      className += " container-active";
+      className.container += " container-active";
+      className.title += " title-active"
     }
 
     let showResultsFor = "Showing results for " + this.state.searchQuery;
 
     return (
         <div className="App">
-          <div className={className}>
+          <div className={className.container}>
+            <h1 className={className.title}>Azure CXP Search</h1>
             <SearchBar 
               bingSearch={this.bingSearch} 
               searchQuery={this.state.searchQuery} 
