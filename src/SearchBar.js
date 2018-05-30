@@ -1,17 +1,24 @@
 import React from 'react';
 
 const SearchBar = (props) => {
+    
+    let className = "search-container";
 
-   const handleSubmit = (event) => {
-        props.bingSearch(props.searchQuery);
-        event.preventDefault();
+    if (props.results.length > 1) {
+        className += " search-container-active"
     }
 
+    const handleSubmit = (event) => {
+         props.bingSearch(props.searchQuery);
+         event.preventDefault();
+     }
+
+    
     return (
-        <div>
+        <div className={className}>
             <form onSubmit={handleSubmit}>
-                <input value={props.searchQuery} onChange={props.handleChange} />
-                <input type="submit" value="Search" />
+                <input className="search-input" value={props.searchQuery} onChange={props.handleChange} />
+                <button type="submit" className="search-button">Search</button>
             </form>
         </div>
     )

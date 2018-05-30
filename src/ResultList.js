@@ -8,6 +8,7 @@ const ResultList = (props) => {
 
     const searchResults = props.results.map((result) => {
         return (
+            <div>
             <ResultItem 
                 result={result} 
                 key={result.id} 
@@ -15,11 +16,12 @@ const ResultList = (props) => {
                 addResult={props.addResult}
                 removeResult={props.removeResult}
                 />
+            </div>
         )
     })
     
     return (
-        <div>
+        <div className="results-container">
             {searchResults}
         </div>
     )   

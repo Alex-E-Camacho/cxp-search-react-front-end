@@ -8,14 +8,14 @@ const ResultItem = (props) => {
     }
 
     return (
-        <div>
+        <div className="result-item">
             <table>
                 <tbody>
                     <tr>
-                        <th><a href={props.result.url}>{props.result.name}</a></th>
+                        <th className="result-title"><a href={props.result.url}>{props.result.name}</a></th>
                     </tr>
                     <tr>
-                        <td>{props.result.displayUrl}</td>
+                        <td className="display-url">{props.result.displayUrl}</td>
                     </tr>
                     <tr>
                         <td>{props.result.snippet}</td>

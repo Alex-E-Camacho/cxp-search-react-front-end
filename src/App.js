@@ -3,6 +3,8 @@ import SearchBar from './SearchBar';
 import ResultList from './ResultList';
 import PreviewWindow from './PreviewWindow';
 import SaveResultsButton from './SaveResultsButton';
+// import '../node_modules/bootstrap/dist/css/bootstrap.min.css';
+
 
 class App extends Component {
   constructor(props) {
@@ -80,36 +82,43 @@ class App extends Component {
 
   render() {
 
+    let className = "container";
+    
+    if (this.state.results.length > 1) {
+      className += " container-active";
+    }
+
+    let showResultsFor = "Showing results for " + this.state.searchQuery;
+
     return (
-      <div className="App">
-        <div>
-          <SearchBar 
-            bingSearch={this.bingSearch} 
-            searchQuery={this.state.searchQuery} 
-            handleChange={this.handleChange}
-          />
+        <div className="App">
+          <div className={className}>
+            <SearchBar 
+              bingSearch={this.bingSearch} 
+              searchQuery={this.state.searchQuery} 
+              handleChange={this.handleChange}
+              results={this.state.results}
+            />
+          </div>
+          <div className="show-results-text">{this.state.results.length > 1 ? showResultsFor : null}</div>
+          <div>
+            <ResultList 
+              results={this.state.results} 
+              fillPreview={this.fillPreviewWindow} 
+              addResult={this.addResult}
+              removeResult={this.removeResult}
+            />
+          </div>
+            <PreviewWindow 
+              resultInPreview={this.state.resultInPreview} 
+              exitPreviewWindow={this.exitPreviewWindow}
+            />
+
+            <SaveResultsButton 
+              saveResults={this.saveResults} 
+              selectedResults={this.state.selectedResults}
+            />
         </div>
-        <div>
-          <ResultList 
-            results={this.state.results} 
-            fillPreview={this.fillPreviewWindow} 
-            addResult={this.addResult}
-            removeResult={this.removeResult}
-          />
-        </div>
-        <div>
-          <PreviewWindow 
-            resultInPreview={this.state.resultInPreview} 
-            exitPreviewWindow={this.exitPreviewWindow}
-          />
-        </div>
-        <div>
-          <SaveResultsButton 
-            saveResults={this.saveResults} 
-            selectedResults={this.state.selectedResults}
-          />
-        </div>
-      </div>
     );
   }
 }
