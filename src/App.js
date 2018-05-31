@@ -3,7 +3,6 @@ import SearchBar from './SearchBar';
 import ResultList from './ResultList';
 import PreviewWindow from './PreviewWindow';
 import SaveResultsButton from './SaveResultsButton';
-// import '../node_modules/bootstrap/dist/css/bootstrap.min.css';
 
 
 class App extends Component {
@@ -72,6 +71,7 @@ class App extends Component {
         results: this.state.selectedResults
       })
     });
+    alert("Your results have been saved.")
     this.setState({
       searchQuery: '',
       results: [],
